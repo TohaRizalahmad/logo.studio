@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil dengan Galeri Marquee</title>
+  <style>
+    body {
+      background: linear-gradient(270deg, #000814, #001d3d, #003566, #0077ff);
+      background-size: 800% 800%;
+      animation: bgGradient 20s ease infinite;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* Animasi gradasi background */
+    @keyframes bgGradient {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    /* Foto Profil */
+    .profile-pic {
+      margin-top: 30px;
+      opacity: 0;
+      transform: translateY(-30px);
+      transition: all 1s ease;
+    }
+    .profile-pic.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .profile-pic img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #00b4ff;
+      box-shadow: 0 0 20px rgba(0, 180, 255, 0.7);
+    }
+
+    /* Paragraf */
+    .description {
+      margin: 15px 0;
+      font-size: 18px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1s ease 0.3s;
+    }
+    .description.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Wrapper galeri */
+    .gallery-wrapper {
+      overflow: hidden;
+      margin: 20px auto;
+      border-radius: 20px;
+      background: rgba(0, 29, 61, 0.85);
+      padding: 15px 0;
+      width: 90%;
+      max-width: 800px;
+      position: relative;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease 0.5s;
+    }
+    .gallery-wrapper.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Track */
+    .gallery {
+      display: flex;
+      gap: 10px;
+      width: max-content;
+      animation: marquee 10s linear infinite;
+    }
+
+    /* Gambar */
+    .gallery img {
+      width: 120px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+      flex-shrink: 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(0, 180, 255, 0.7);
+    }
+
+    /* Animasi jalan mulus tanpa putus */
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* Formulir Pesan */
+    .price-card {
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background: rgba(0, 29, 61, 0.85);
+      border-radius: 12px;
+      width: 90%;
+      max-width: 600px;
+      text-align: left;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease 0.7s;
+    }
+    .price-card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .price-card label {
+      color: #00d4ff;
+      font-weight: bold;
+    }
+    .price-card textarea {
+      border-radius: 8px;
+      padding: 10px;
+      border: 1px solid #00d4ff;
+      background: #0e1a2b;
+      color: #fff;
+      width: 100%;
+      transition: box-shadow 0.3s;
+    }
+    .price-card textarea:focus {
+      box-shadow: 0 0 12px #00b4ff;
+      outline: none;
+    }
+    .price-card button {
+      background: linear-gradient(135deg, #0077ff, #00d4ff);
+      color: white;
+      padding: 10px 0;
+      border-radius: 8px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+      width: 100%;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .price-card button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(0, 180, 255, 0.8);
+    }
+    .price-card small {
+      color: #00d4ff;
+      opacity: 0.7;
+      display: block;
+      margin-top: 5px;
+    }
+
+    /* Tombol info lebih lanjut */
+    .wa-btn {
+      display:inline-block;
+      background: linear-gradient(135deg, #0077ff, #00d4ff);
+      color:white;
+      padding:10px 20px;
+      border-radius:8px;
+      font-weight:bold;
+      text-decoration:none;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .wa-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 18px rgba(0, 180, 255, 0.8);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="profile-pic reveal">
+    <img src="SnapInsta.to 1.jpg" alt="Foto Profil">
+  </div>
+
+  <div class="description reveal">
+    DESAIN OFFICIAL
+    <br>
+    <small style="color:#00d4ff;opacity:0.7;">Karya desain digital & cetak</small>
+  </div>
+
+  <div class="gallery-wrapper reveal">
+    <div class="gallery">
+      <img src="SnapInsta.to 1.jpg" alt="Foto 1">
+      <img src="SnapInsta.to 2.jpg" alt="Foto 2">
+      <img src="SnapInsta.to 3.jpg" alt="Foto 3">
+      <img src="SnapInsta.to 4.jpg" alt="Foto 4">
+      <img src="SnapInsta.to 5.jpg" alt="Foto 5">
+      <img src="SnapInsta.to 6.jpg" alt="Foto 6">
+
+      <!-- Duplikasi agar marquee mulus -->
+      <img src="SnapInsta.to 1.jpg" alt="Foto 1">
+      <img src="SnapInsta.to 2.jpg" alt="Foto 2">
+      <img src="SnapInsta.to 3.jpg" alt="Foto 3">
+      <img src="SnapInsta.to 4.jpg" alt="Foto 4">
+      <img src="SnapInsta.to 5.jpg" alt="Foto 5">
+      <img src="SnapInsta.to 6.jpg" alt="Foto 6">
+    </div>
+  </div>
+  
+  <div class="price-card reveal">
+    <form id="formUpload" onsubmit="kirimPesanUpload(); return false;">
+      <label for="pesanTulisan">Tulis Permintaan Desain Anda:</label>
+      <textarea id="pesanTulisan" rows="4" placeholder="Masukkan Teks..."></textarea>
+
+      <button type="submit">Kirim ke WhatsApp</button>
+      <small>*Permintaan Anda Akan Dikirim via chat WhatsApp.</small>
+    </form>
+
+    <div style="margin-top:1.5rem; text-align:center;">
+      <p style="color:#0004ff; font-weight:bold; margin-bottom:0.5rem;">
+        Untuk info lebih lanjut
+      </p>
+      <a href="https://wa.me/6285768163579" target="_blank" class="wa-btn">
+         Hubungi via WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <script>
+  // Fungsi kirim ke WhatsApp
+  function kirimPesanUpload() {
+    let pesan = document.getElementById("pesanTulisan").value;
+    if (pesan.trim() === "") {
+      alert("Silakan tulis pesan dulu!");
+      return;
+    }
+    let nomor = "6285709662892";
+    let url = "https://wa.me/" + nomor + "?text=" + encodeURIComponent(pesan);
+    window.open(url, "_blank");
+  }
+
+  // Scroll reveal animation
+  const reveals = document.querySelectorAll('.reveal');
+  window.addEventListener('scroll', () => {
+    for (let r of reveals) {
+      const windowHeight = window.innerHeight;
+      const elementTop = r.getBoundingClientRect().top;
+      if (elementTop < windowHeight - 50) {
+        r.classList.add('show');
+      }
+    }
+  });
+  </script>
+
+</body>
+</html>
